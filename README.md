@@ -3,4 +3,11 @@ That is the result of the project for the computational fluid dynamics disciplin
 
 I did some validations that I compiled in these papers: 
 
-# Some results: Lid-driven Cavity
+## Some results: Lid-driven Cavity
+
+One 
+
+<img src="video 10s.gif"
+     alt="Home Screen"
+     style="float:left;margin-right=10px;"
+     width="400"/>
