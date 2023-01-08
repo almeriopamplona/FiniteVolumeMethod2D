@@ -7,7 +7,7 @@ I did some validations that I compiled in these papers:
 
 One 
 
-<img src="video 10s.gif"
+<img src="video10s.gif"
      alt="Home Screen"
      style="float:left;margin-right=10px;"
      width="400"/>
