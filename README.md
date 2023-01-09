@@ -1,5 +1,8 @@
 # Finite Volume Method - 2D
 
+![Language](http://img.shields.io/static/v1?label=language&message=python&color=GREEN&style=plastic)
+![License](http://img.shields.io/static/v1?label=license&message=MIT&color=yellow&style=plastic)
+
 ## Table of contents
 
 * [General info](#general-info)
