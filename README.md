@@ -19,7 +19,7 @@ I did some validations that I compiled in these papers: <a href="Reports/LidCavi
 
 ### Lid-driven cavity
 
-One run simulations for six Reynolds numbers: 100, 400, 1000, 3200, 7500, and 10000. These are the same cases that Ghia (1982) investigated in his paper and were used to validate the code. Additionally, one used mainly a 128 x 128 staggered grid. For Re = 100, 400, and 1000, one used a time step equal to 1E-5 s and a final time equal to 30 s. For the other three Reynolds numbers,  one used a time step equal to 2E-4 and final time equal to 660 s. The streamlines with the velocity field as the backgroud are in the following figures:
+One run simulations for six Reynolds numbers: 100, 400, 1000, 3200, 7500, and 10000. These are the same cases that Ghia (1982) investigated in his paper and were used to validate the code. Additionally, one used mainly a 128 x 128 staggered grid. For Re = 100, 400, and 1000, one used a time step equal to 1E-5 s and a final time equal to 30 s. For the other three Reynolds numbers,  one used a time step equal to 2E-4 s and final time equal to 660 s. The streamlines with the velocity field as the backgroud are in the following figures:
 
 <table>
   <tr>
@@ -44,7 +44,7 @@ One run simulations for six Reynolds numbers: 100, 400, 1000, 3200, 7500, and 10
   </td>
 </table>
 
-Time evolution is given by the following gif, which represents a 10x10 grid containing a flow with Re = 100::
+Time evolution is given by the following gif, which represents a 10x10 grid containing a flow with Re = 1000:
 
 <p align="left">
 <img src="Reports/video10s.gif" alt="Home Screen" style="float:center;margin-right=10px;" width="200"/>
