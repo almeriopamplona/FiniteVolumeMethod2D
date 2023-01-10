@@ -1,3 +1,12 @@
+# *****************************************************************************
+# *                    DIRECTORY MANAGER - LID CAVITY                         *
+# *****************************************************************************
+# * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
+# * E-mail: almeriopamplona@gmail.com                                         *
+# *****************************************************************************
+# * Description: class that manages folder and files.                         *
+# *****************************************************************************
+
 import os
 import Constants as ct
 from ControlParameters import ControlParameters
