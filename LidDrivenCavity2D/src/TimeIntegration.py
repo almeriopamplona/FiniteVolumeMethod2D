@@ -1,3 +1,12 @@
+# *****************************************************************************
+# *                     TIME INTEGRATION - LID CAVITY                         *
+# *****************************************************************************
+# * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
+# * E-mail: almeriopamplona@gmail.com                                         *
+# *****************************************************************************
+# * Description: contains time integration algorithms.                        *
+# *****************************************************************************
+
 import numpy as np
 from MeshGenerator import MeshGenerator
 
