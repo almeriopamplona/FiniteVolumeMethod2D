@@ -23,6 +23,7 @@ DIR_WARNINGS = DIR_REPORTS + OS_SEP + "Warnings"
 #
 # =========================================================================== #
 PRESSURE_OUTPUT = "pressure"
+VELOCITY_OUTPUT = "velocity"
 VELOCITYX_OUTPUT = "velocityX"
 VELOCITYY_OUTPUT = "velocityY"
 GHIA_VELOCITY_VERTICAL = "ghiaVelocityVertical"
