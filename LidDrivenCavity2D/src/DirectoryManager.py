@@ -26,8 +26,10 @@ class DirectoryManager(ControlParameters):
         self.__agarwalVelocityVertical: str
         self.__agarwalVelocityHorizontal: str
         self.__pressureOutputStreamline: str
+        self.__velocityOutputStreamline: str
         self.__velocityXOutputStreamline: str
         self.__velocityYOutputStreamline: str
+        
 
         # Instance:
         # --------------
@@ -50,6 +52,7 @@ class DirectoryManager(ControlParameters):
         self.__agarwalVelocityVertical = self.__getAgarwalVelocityVerticalPath
         self.__agarwalVelocityHorizontal = self.__getAgarwalVelocityHorizontalPath
         self.__pressureOutputStreamline = self.__getPressureOutputStreamline
+        self.__velocityOuptutStreamline = self.__getVelocityOutputStreamline
         self.__velocityXOutputStreamline = self.__getVelocityXOutputStreamline
         self.__velocityYOutputStreamline = self.__getVelocityYOutputStreamline
 
@@ -126,7 +129,13 @@ class DirectoryManager(ControlParameters):
         return self.__dirFigure + ct.OS_SEP + ct.PRESSURE_OUTPUT + \
             "_{}x{}_Re{}_stream".format(
                 self.nodeNumberY, self.nodeNumberX, self.reynoldsNumber)
-
+    
+    @property
+    def __getVelocityOutputStreamline(self) -> str:
+        return self.__dirFigure + ct.OS_SEP + ct.VELOCITY_OUTPUT + \
+            "_{}x{}_Re{}_stream".format(
+                self.nodeNumberY, self.nodeNumberX, self.reynoldsNumber)
+    
     @property
     def __getVelocityXOutputStreamline(self) -> str:
         return self.__dirFigure + ct.OS_SEP + ct.VELOCITYX_OUTPUT + \
@@ -219,6 +228,10 @@ class DirectoryManager(ControlParameters):
     def getPressureOutputStreamline(self) -> str:
         return self.__pressureOutputStreamline
 
+    @property
+    def getVelocityOutputStreamline(self) -> str:
+        return self.__velocityOutputStreamline
+    
     @property
     def getVelocityXOutputStreamline(self) -> str:
         return self.__velocityXOutputStreamline
