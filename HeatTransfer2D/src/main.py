@@ -5,14 +5,14 @@ from PostProcess import PostProcess
 
 if __name__ == '__main__':
 
-    # solid = Solid()
-    # solver = Solver()
-    # analyticalSolver = AnalyticalSolver()
+    solid = Solid()
+    solver = Solver()
     postProcessor = PostProcess()
-
+    analyticalSolver = AnalyticalSolver()
+    
     # analyticalSolver.solveDirichletPlate(solid)
     # solver.solve2DDirichletProblem(solid)
-    # solver.solve2DRobinProblem(solid)
+    solver.solve2DRobinProblem(solid)
 
     postProcessor.plotTemperatureDistribution()
     # postProcessor.plotProbesEvolution()
