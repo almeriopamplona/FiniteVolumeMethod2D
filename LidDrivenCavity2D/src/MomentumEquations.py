@@ -1,3 +1,12 @@
+# *****************************************************************************
+# *                     MOMENTUM EQUATIONS - LID CAVITY                       *
+# *****************************************************************************
+# * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
+# * E-mail: almeriopamplona@gmail.com                                         *
+# *****************************************************************************
+# * Description: contains the discrete form of the Navier-Stokes equations    * 
+# * and the velocity field treatment on the boundaries.                       *
+# *****************************************************************************
 import numpy as np
 from MeshGenerator import MeshGenerator
 
