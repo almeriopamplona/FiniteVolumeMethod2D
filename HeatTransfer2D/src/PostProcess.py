@@ -150,17 +150,17 @@ class PostProcess(DirectoryManager, MeshGenerator):
         L2_error_norm = np.sum((tempAnalytical - tempNumerical)**2)
         L2_norm = np.sum(tempAnalytical**2)
 
-        l2_error = np.sqrt(L2_error_norm/L2_norm)
+        L2_error = np.sqrt(L2_error_norm/L2_norm)
 
         relativeError = np.divide(
             abs(tempAnalytical - tempNumerical), abs(tempAnalytical),
             out=np.zeros(tempAnalytical.shape, dtype=float),
             where=tempAnalytical!=0)
 
-        l1_error = np.mean(relativeError, where=relativeError<1)
+        L1_error = np.mean(relativeError, where=relativeError<1)
 
-        print("L2-Error: {}".format(l2_error))
-        print("L1-Error: {}".format(l1_error))
+        print("L2-Error: {}".format(L2_error))
+        print("L1-Error: {}".format(L1_error))
 
         positionX = \
             (coordinatesX[0,:] > 0.01 - self.deltaX) & \
