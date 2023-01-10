@@ -64,29 +64,7 @@ class ControlParameters:
         self.pressureGradientBottom: float        # Pa / m
         self.pressureGradientLeft: float          # Pa / m
         self.pressureGradientRight: float         # Pa / m
-
-        self.meshfilename = \
-            "D:\MasterDegreeUFG\ComputationalFluidDynamics" + \
-            "\Homework5_Cavity\Cavity\Results\mesh.txt"
-        self.pressurefilename = \
-            "D:\MasterDegreeUFG\ComputationalFluidDynamics" + \
-            "\Homework5_Cavity\Cavity\Results\Pressure\pressure"
-        self.velocityXfilename = \
-            "D:\MasterDegreeUFG\ComputationalFluidDynamics" + \
-            "\Homework5_Cavity\Cavity\Results\VelocityX\velocityX"
-        self.velocityYfilename = \
-            "D:\MasterDegreeUFG\ComputationalFluidDynamics" + \
-            "\Homework5_Cavity\Cavity\Results\VelocityY\velocityY"
-        self.estpressurefilename = \
-            "D:\MasterDegreeUFG\ComputationalFluidDynamics" + \
-            "\Homework5_Cavity\Cavity\Results\Pressure\estimatePressure"
-        self.estvelocityXfilename = \
-            "D:\MasterDegreeUFG\ComputationalFluidDynamics" + \
-            "\Homework5_Cavity\Cavity\Results\VelocityX\estimateVelocityX"
-        self.estvelocityYfilename = \
-            "D:\MasterDegreeUFG\ComputationalFluidDynamics" + \
-            "\Homework5_Cavity\Cavity\Results\VelocityY\estimateVelocityY"
-
+            
         PI = np.pi
 
         # Walls initial conditions:
