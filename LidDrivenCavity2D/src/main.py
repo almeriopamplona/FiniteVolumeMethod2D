@@ -1,3 +1,12 @@
+# *****************************************************************************
+# *                            MAIN - LID CAVITY                              *
+# *****************************************************************************
+# * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
+# * E-mail: almeriopamplona@gmail.com                                         *
+# *****************************************************************************
+# * Description: controls what program will do.                               *
+# *****************************************************************************
+
 from Solver import Solver
 from Fluid import Fluid
 from PostProcess import PostProcess
