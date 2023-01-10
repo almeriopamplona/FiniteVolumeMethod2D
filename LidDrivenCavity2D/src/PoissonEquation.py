@@ -1,3 +1,12 @@
+# *****************************************************************************
+# *                     POISSON EQUATION - LID CAVITY                         *
+# *****************************************************************************
+# * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
+# * E-mail: almeriopamplona@gmail.com                                         *
+# *****************************************************************************
+# * Description: contains the Poisson Equation discrete form and the pressure *
+# * treatment on the boundaries.                                              *
+# *****************************************************************************
 import numpy as np
 from MeshGenerator import MeshGenerator
 
@@ -7,226 +16,6 @@ class PoissonEquation(MeshGenerator):
     def __init__(self):
 
         super().__init__()
-
-    def getPoissonMatrix(self) -> np.array:
-
-        i: int
-        k: int
-        nx: int
-        ny: int
-        coefficientEast: float
-        coefficientWest: float
-        coefficientNorth: float
-        coefficientSouth: float
-        coefficientCenter: float
-        coefficientMatrix: np.array
-
-        nx = self.nodeNumberX ** 2
-        ny = self.nodeNumberX ** 2
-
-        coefficientEast = self.deltaT / self.deltaX ** 2
-        coefficientWest = self.deltaT / self.deltaX ** 2
-        coefficientNorth = self.deltaT / self.deltaY ** 2
-        coefficientSouth = self.deltaT / self.deltaY ** 2
-        coefficientCenter = \
-            -2.0 * self.deltaT * (self.deltaX ** 2 + self.deltaY ** 2) / \
-            (self.deltaX ** 2 * self.deltaY ** 2)
-
-        coefficientMatrix = np.zeros((ny, nx), dtype=np.float)
-
-        # Two - dimensional phenomenon:
-        for i in (ny ** 2):
-            k = i + 1
-            # LEFTWALL
-            if np.mod(k, nx) == 1:
-                # BOTTOM
-                if k <= nx:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientWest + coefficientSouth
-                    coefficientMatrix[i, i + 1] = coefficientEast
-                    coefficientMatrix[i, i + 3] = coefficientNorth
-                # TOP
-                elif k >= nx ** 2 - nx + 1:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientWest + coefficientNorth
-                    coefficientMatrix[i, i + 1] = coefficientEast
-                    coefficientMatrix[i, i - 3] = coefficientSouth
-                    # INTERIOR
-                else:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientWest
-                    coefficientMatrix[i, i + 1] = coefficientEast
-                    coefficientMatrix[i, i + 3] = coefficientNorth
-                    coefficientMatrix[i, i - 3] = coefficientSouth
-
-            # INTERIOR
-            if (np.mod(k, nx) > 1) and (np.mod(i, nx) < nx):
-                # BOTTOM
-                if k <= nx:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientSouth
-                    coefficientMatrix[i, i + 1] = coefficientEast
-                    coefficientMatrix[i, i - 1] = coefficientWest
-                    coefficientMatrix[i, i + 3] = coefficientNorth
-                # TOP
-                elif k >= nx ** 2 - nx + 1:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientNorth
-                    coefficientMatrix[i, i + 1] = coefficientEast
-                    coefficientMatrix[i, i - 1] = coefficientWest
-                    coefficientMatrix[i, i - 3] = coefficientSouth
-                # INTERIOR
-                else:
-                    coefficientMatrix[i, i] = coefficientCenter
-                    coefficientMatrix[i, i + 1] = coefficientEast
-                    coefficientMatrix[i, i - 1] = coefficientWest
-                    coefficientMatrix[i, i + 3] = coefficientNorth
-                    coefficientMatrix[i, i - 3] = coefficientSouth
-
-            # RIGHT WALL
-            if np.mod(k, nx) == 0:
-                # BOTTOM
-                if k <= nx:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientEast + coefficientSouth
-                    coefficientMatrix[i, i - 1] = coefficientWest
-                    coefficientMatrix[i, i + 3] = coefficientNorth
-                # TOP
-                elif k >= nx ** 2 - nx + 1:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientEast + coefficientNorth
-                    coefficientMatrix[i, i - 1] = coefficientWest
-                    coefficientMatrix[i, i - 3] = coefficientSouth
-                # INTERIOR
-                else:
-                    coefficientMatrix[i, i] = \
-                        coefficientCenter + coefficientNorth
-                    coefficientMatrix[i, i - 1] = coefficientWest
-                    coefficientMatrix[i, i + 3] = coefficientNorth
-                    coefficientMatrix[i, i - 3] = coefficientSouth
-
-        return coefficientMatrix
-
-    def getPoissonVector(self) -> np.array:
-
-        i: int
-        k: int
-        nx: int
-        ny: int
-        numFluidElements: int
-
-        coefficientEast: float
-        coefficientWest: float
-        coefficientNorth: float
-        coefficientSouth: float
-        coefficientCenter: float
-        coefficientMatrix: np.array
-
-        nx = self.nodeNumberX ** 2
-        ny = self.nodeNumberX ** 2
-
-        coefficientEast = self.deltaT / self.deltaX ** 2
-        coefficientWest = self.deltaT / self.deltaX ** 2
-        coefficientNorth = self.deltaT / self.deltaY ** 2
-        coefficientSouth = self.deltaT / self.deltaY ** 2
-        coefficientCenter = \
-            -2.0 * self.deltaT * (self.deltaX ** 2 + self.deltaY ** 2) / \
-            (self.deltaX ** 2 * self.deltaY ** 2)
-
-        numFluidElements = 5
-
-        coefficientVector = np.zeros((ny * numFluidElements), dtype=np.float)
-
-        k = 0
-        # Two - dimensional phenomenon:
-        for i in (1, ny ** 2 + 1):
-            # LEFT WALL
-            if np.mod(i, nx) == 1:
-                # BOTTOM
-                if i <= nx:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientWest + coefficientSouth
-                    coefficientVector[k + 1] = coefficientEast
-                    coefficientVector[k + 3] = coefficientNorth
-
-                    k = k + numFluidElements
-                # TOP
-                elif i >= nx ** 2 - nx + 1:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientWest + coefficientNorth
-                    coefficientVector[k + 1] = coefficientEast
-                    coefficientVector[k + 4] = coefficientSouth
-
-                    k = k + numFluidElements
-                # INTERIOR
-                else:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientWest
-                    coefficientVector[k + 1] = coefficientEast
-                    coefficientVector[k + 3] = coefficientNorth
-                    coefficientVector[k + 4] = coefficientSouth
-
-                    k = k + numFluidElements
-
-            # INTERIOR
-            if (np.mod(i, nx) > 1) and (np.mod(i, nx) < nx):
-                # BOTTOM
-                if i <= nx:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientSouth
-                    coefficientVector[k + 1] = coefficientEast
-                    coefficientVector[k + 2] = coefficientWest
-                    coefficientVector[k + 3] = coefficientNorth
-
-                    k = k + numFluidElements
-                # TOP
-                elif i >= nx ** 2 - nx + 1:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientNorth
-                    coefficientVector[k + 1] = coefficientEast
-                    coefficientVector[k + 2] = coefficientWest
-                    coefficientVector[k + 4] = coefficientSouth
-
-                    k = k + numFluidElements
-                # INTERIOR
-                else:
-                    coefficientVector[k] = coefficientCenter
-                    coefficientVector[k + 1] = coefficientEast
-                    coefficientVector[k + 1] = coefficientWest
-                    coefficientVector[k + 3] = coefficientNorth
-                    coefficientVector[k + 4] = coefficientSouth
-
-                    k = k + numFluidElements
-
-            # RIGHT WALL
-            if np.mod(i, nx) == 0:
-                # BOTTOM
-                if i <= nx:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientEast + coefficientSouth
-                    coefficientVector[k + 2] = coefficientWest
-                    coefficientVector[k + 3] = coefficientNorth
-
-                    k = k + numFluidElements
-                # TOP
-                elif i >= nx ** 2 - nx + 1:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientEast + coefficientNorth
-                    coefficientVector[k + 2] = coefficientWest
-                    coefficientVector[k + 4] = coefficientSouth
-
-                    k = k + numFluidElements
-                # INTERIOR
-                else:
-                    coefficientVector[k] = \
-                        coefficientCenter + coefficientNorth
-                    coefficientVector[k + 2] = coefficientWest
-                    coefficientVector[k + 3] = coefficientNorth
-                    coefficientVector[k + 4] = coefficientSouth
-
-                    k = k + numFluidElements
-
-        return coefficientVector
 
     def getPoissonSolution(
             self, estimateVelocityX: np.array, estimateVelocityY: np.array) -> \
@@ -288,10 +77,8 @@ class PoissonEquation(MeshGenerator):
             coefficientNorth: float, coefficientSouth: float) -> np.array:
 
         k: int
-        nx: int   # number of nodes
-        ny: int   # number of nodes
-        mnx: int  # max number of nodes
-        mny: int  # max number of nodes
+        mnx: int 
+        mny: int  
         maxItera: int
 
         mnx = self.maxNodeNumberX
