@@ -4,7 +4,7 @@
 # * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
 # * E-mail: almeriopamplona@gmail.com                                         *
 # *****************************************************************************
-# * Description: controls what program will do.                               *
+# * Description: controls what the program will do.                           *
 # *****************************************************************************
 
 from Solver import Solver
