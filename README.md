@@ -19,7 +19,7 @@ I did some validations that I compiled in these papers: <a href="Reports/LidCavi
 
 ### Lid-driven cavity
 
-One run simulations for six Reynolds numbers: 100, 400, 1000, 3200, 7500, and 10000. These are the same cases that Ghia (1982) investigated in his paper and were used to validate the code. Additionally, one used mainly a 128 x 128 staggered grid. For Re = 100, 400, and 1000, one used a time step equal to 1E-5 s and a final time equal to 30 s. For the other three Reynolds numbers,  one used a time step equal to 2E-4 s and final time equal to 660 s. The streamlines with the velocity field as the backgroud are in the following figures:
+One ran simulations for six Reynolds numbers: 100, 400, 1000, 3200, 7500, and 10000. These are the same cases that Ghia (1982) investigated in his paper and were used to validate the code. Additionally, one used mainly a 128 x 128 staggered grid. For Re = 100, 400, and 1000, one used a time step equal to 1E-5 s and a final time equal to 30 s. For the other three Reynolds numbers,  one used a time step equal to 2E-4 s and final time equal to 660 s. The streamlines with the velocity field as the backgroud are in the following figures:
 
 <table>
   <tr>
@@ -49,5 +49,19 @@ Time evolution is given by the following gif, which represents a 10x10 grid cont
 <p align="left">
 <img src="Reports/video10s.gif" alt="Home Screen" style="float:center;margin-right=10px;" width="200"/>
 </p>
+
+### Heat transfer on a plate
+
+First, one ran a simple Dirichlet problem on a plate with four different temperatures on the boundaries: 25 ºC on the south, 75 ºC on the east, 100 º C on the north, and 50 º C on the west. The grid was structured and uniform and had 256 x 256 cells. The time step was 1E-4 s, the final time was 60 s, the diffusivity was 3.94E-6 m^2/s, and the plate dimensions were 0.02 m in length and 0.01 m in height. The following figures show the analytical result and the numerical one:
+
+<table>
+  <tr>
+      <td>Analytical/td>
+      <td>Numerical - FVM</td>
+  </tr>
+  <tr>  
+    <td><img src="HeatTransfer2D/Reports/figure/temperature_256x256_Analitico_stream.png" alt="Home Screen" style="float:center;margin-right=10px;" width="200"/></td>
+    <td><img src="HeatTransfer2D/Reports/figure/temperature_DIRICHLET_PROBLEM_explicit_256x256.png" alt="Home Screen" style="float:center;margin-right=10px;" width="200"/></td>
+  </td>
 
 ## References
