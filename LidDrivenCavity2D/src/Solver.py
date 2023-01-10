@@ -1,3 +1,13 @@
+# *****************************************************************************
+# *                           SOLVER - LID CAVITY                             *
+# *****************************************************************************
+# * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
+# * E-mail: almeriopamplona@gmail.com                                         *
+# *****************************************************************************
+# * Description: contains the main algorithm to solve the lid-driven cavity   *
+# * problem.                                                                  *
+# *****************************************************************************
+
 import time
 import pandas as pd
 from Fluid import Fluid
@@ -35,7 +45,11 @@ class Solver(PostProcess):
 
         mnx = self.maxNodeNumberX
         mny = self.maxNodeNumberY
-
+        
+        #
+        # Dataframe structures to save velocities at each time step. The goal
+        # is to track each state and then make a video.
+        #
         # outputPressure = pd.DataFrame(
         #     data={
         #         "x": fluid.coordinateX, "y": fluid.coordinateY,
@@ -53,6 +67,7 @@ class Solver(PostProcess):
         #         "x": fluid.coordinateX, "y": fluid.coordinateY,
         #         "t0": fluid.velocityY[1:mny - 1, 1:mnx - 1].reshape(
         #             fluid.coordinateX.shape)})
+        
         pressureDf = self.readOutput(self.getPressureOutputPath)
         velocityXDf = self.readOutput(self.getVelocityXOutputPath)
         velocityYDf = self.readOutput(self.getVelocityYOutputPath)
@@ -116,6 +131,9 @@ class Solver(PostProcess):
                       "continuity = {}".format(fluid.continuity))
                 exit()
 
+            #
+            # tracking things, if you want to make a video 
+            #
             # outputPressure["t{}".format(t+1)] = \
             #     fluid.pressure[1:mny - 1, 1:mnx - 1].reshape(
             #         fluid.coordinateX.shape)
