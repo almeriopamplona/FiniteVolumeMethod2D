@@ -24,28 +24,38 @@ class ControlParameters:
         self.ghostNodeNumberX: np.int64
         self.ghostNodeNumberY: np.int64
 
-        self.CFL: np.float64  # -
-        self.PI: np.float64  # -
-        self.width: np.float64  # m
-        self.length: np.float64  # m
-        self.convection: np.float64  # W / (m**2 * K)
-        self.diffusivity: np.float64  # m**2 / s
-        self.conductivity: np.float64  # W / (m * K)
-        self.maxDeltaT: np.float64  # s
-        self.iterTolerance: np.float64  # -
-        self.relaxationConstant: np.float64  # -
+        self.problemType: str
+        self.solutionMethod: str
+        self.problemDimension: str
+                       
+        self.CFL: np.float64                     # -
+        self.PI: np.float64                      # -
+        self.width: np.float64                   # m
+        self.length: np.float64                  # m
+        self.convection: np.float64              # W / (m**2 * K)
+        self.diffusivity: np.float64             # m**2 / s
+        self.conductivity: np.float64            # W / (m * K)
+        self.maxDeltaT: np.float64               # s
+        self.iterTolerance: np.float64           # -
+        self.relaxationConstant: np.float64      # -
 
-        self.finalTime: np.float64  # s
-        self.initialTime: np.float64  # s
+        self.finalTime: np.float64               # s
+        self.initialTime: np.float64             # s
 
-        self.heatSource: np.float64  # W / m**2
-        self.initialTemperature: np.float64
-        self.environmentTemperature: np.float64  # K
+        self.heatSource: np.float64              # W / m**2
+        self.tempTop: np.float64                 # ºC
+        self.tempWest: np.float64                # ºC
+        self.tempEast: np.float64                # ºC
+        self.tempNorth: np.float64               # ºC
+        self.tempSouth: np.float64               # ºC
+        self.tempbBottom: np.float64             # ºC
+        self.initialTemperature: np.float64      # ºC
+        self.environmentTemperature: np.float64  # ºC
 
-        self.finalPositionX: np.float64  # m
-        self.finalPositionY: np.float64  # m
-        self.initialPositionX: np.float64  # m
-        self.initialPositionY: np.float64  # m
+        self.finalPositionX: np.float64          # m
+        self.finalPositionY: np.float64          # m
+        self.initialPositionX: np.float64        # m
+        self.initialPositionY: np.float64        # m
 
         self.heatSourcePositionEnd1: np.float64
         self.heatSourcePositionStart1: np.float64
