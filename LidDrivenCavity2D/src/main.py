@@ -10,7 +10,7 @@ if __name__ == '__main__':
     solver.solveCavity(fluid)
 
     postProcessor = PostProcess()
-    postProcessor.plotDataComparison()
+    # postProcessor.plotDataComparison()
     # postProcessor.makeVideo()
     # postProcessor.plotStreamlines("pressure", fileFormat="pdf")
     # postProcessor.plotStreamlines("velocityX", fileFormat="pdf")
