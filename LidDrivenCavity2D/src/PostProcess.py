@@ -82,11 +82,12 @@ class PostProcess(DirectoryManager, MeshGenerator):
             pyplot.contourf(coordinatesX, coordinatesY, velocityY, alpha=0.5,
                             cmap=cm.jet)
             filename = self.getVelocityYOutputStreamline
+        
         elif background == "velocity":
             velocity = np.sqrt(velocityX**2 + velocityY**2)
             pyplot.contourf(coordinatesX, coordinatesY, velocity, alpha=0.5,
                             cmap=cm.jet)
-            filename = self.getVelocityYOutputStreamline
+            filename = self.getVelocityOutputStreamline
         else:
             print(
                 "ERROR:: your background choice must be: 'pressure', "
@@ -104,11 +105,11 @@ class PostProcess(DirectoryManager, MeshGenerator):
         pyplot.savefig(
             filename + "." + fileFormat, dpi=fileDpi, format=fileFormat)
 
-
     def plotDataComparison(self, fileFormat: str = 'pdf', fileDpi: int =
             1000):
 
-        filename: str
+        filenameCompY: str
+        filenameCompX: str
 
         pressureDf: pd.DataFrame
         velocityXDf: pd.DataFrame
@@ -206,13 +207,20 @@ class PostProcess(DirectoryManager, MeshGenerator):
         plt.grid()
         pyplot.savefig(filenameCompX + "." + fileFormat, dpi=fileDpi,
             format=fileFormat)
-
         #plt.show()
 
     def makeVideo(self):
 
         filename: str
-
+        nx: int
+        ny: int
+        axisX: np.array
+        axisY: np.array
+        velocity: np.array
+        velocityX: np.array
+        velocityY: np.array
+        coordinatesX: np.array
+        coordinatesY: np.array
         pressureDf: pd.DataFrame
         velocityXDf: pd.DataFrame
         velocityYDf: pd.DataFrame
