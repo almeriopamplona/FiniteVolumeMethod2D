@@ -1,3 +1,12 @@
+# *****************************************************************************
+# *                          CONSTANTS - LID CAVITY                           *
+# *****************************************************************************
+# * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
+# * E-mail: almeriopamplona@gmail.com                                         *
+# *****************************************************************************
+# * Description: contains constant variables.                                 *
+# *****************************************************************************
+
 import os
 from pathlib import Path
 
