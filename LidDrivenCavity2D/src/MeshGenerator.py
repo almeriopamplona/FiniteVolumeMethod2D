@@ -4,7 +4,7 @@
 # * Author: Almerio Jose Venancio Pains Soares Pamplona                       *
 # * E-mail: almeriopamplona@gmail.com                                         *
 # *****************************************************************************
-# * Description: generates the mesh parameters and coordinates.               *                                                  *
+# * Description: generates the mesh parameters and coordinates.               *
 # *****************************************************************************
 
 import numpy as np
@@ -76,8 +76,6 @@ class MeshGenerator(ControlParameters):
             (self.finalTime - self.initialTime) / tempDeltaT))
 
         deltaT = (self.finalTime - self.initialTime) / (timeSize - 1)
-
-        print("deltaT {}, Number of Time Steps: {}".format(deltaT, timeSize))
 
         return deltaT, deltaX, deltaY, timeSize, spaceSizeX, spaceSizeY
 
